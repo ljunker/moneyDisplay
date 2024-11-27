@@ -118,7 +118,7 @@ void setup() {
   timeClient.update();
 }
 void loop() {
-  delay(200);
+  delay(1000);
   if (WiFi.status() != WL_CONNECTED || lastUpdateLongerThanThan10Minutes()) {
     connectWifi();
     timeClient.update();
