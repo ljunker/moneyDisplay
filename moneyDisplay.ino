@@ -53,10 +53,6 @@ double calcMoney() {
   return secondsSinceClubNightBeginning() * moneyPerSecond;
 }
 
-bool isOneSecondElapsed() {
-  int currentStamp = currentTimestampSeconds();
-  return (currentStamp - lastDisplayUpdateStamp) >= 1;
-}
 
 char * toCharArray(String text) {
   int str_len = text.length() + 1;
@@ -124,11 +120,9 @@ void loop() {
     timeClient.update();
     lastNTPUpdateStamp = currentTimestampMinutes();
   }
-  //wait  for a second
-  if (isOneSecondElapsed()) {
-    clearDisplay();
-    displayWriting();
-    lastDisplayUpdateStamp = currentTimestampSeconds();
-  }
+
+  clearDisplay();
+  displayWriting();
+  lastDisplayUpdateStamp = currentTimestampSeconds();
   
 }
