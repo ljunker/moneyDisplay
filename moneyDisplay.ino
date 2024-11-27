@@ -60,7 +60,7 @@ bool isOneSecondElapsed() {
 
 char * toCharArray(String text) {
   int str_len = text.length() + 1;
-  char char_array[str_len];
+  char * char_array = (char*) malloc(str_len+1);
   text.toCharArray(char_array, str_len);
   return char_array;
 }
@@ -74,11 +74,14 @@ void displayWriting() {
   text = text + timeClient.getSeconds();
   char * char_array = toCharArray(text);
   lcd.printstr(char_array);
+  free(char_array);
   lcd.setCursor(0,1);
   double money = calcMoney() / 100;
   text = "";
   text = text + String(money, 4);
-  lcd.printstr(toCharArray(text));
+  char_array = toCharArray(text);
+  lcd.printstr(char_array);
+  free(char_array);
 }
 
 void clearDisplay() {
