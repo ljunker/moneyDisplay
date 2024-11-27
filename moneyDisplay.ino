@@ -13,7 +13,7 @@
 //the first parameter is  the I2C address
 //the second parameter is how many rows are on your screen
 //the  third parameter is how many columns are on your screen
-LiquidCrystal_I2C lcd(0x27,  16, 2);
+LiquidCrystal_I2C lcd(0x27,  2, 16);
 
 const char * ssid = "BananaPhone";
 const char * password = "thisistemporary";
