@@ -11,9 +11,9 @@
 
 //initialize the liquid crystal library
 //the first parameter is  the I2C address
-//the second parameter is how many rows are on your screen
-//the  third parameter is how many columns are on your screen
-LiquidCrystal_I2C lcd(0x27,  2, 16);
+//the second parameter is how many cols are on your screen
+//the  third parameter is how many rows are on your screen
+LiquidCrystal_I2C lcd(0x27,  16, 2);
 
 const char * ssid = "BananaPhone";
 const char * password = "thisistemporary";
@@ -35,10 +35,8 @@ int currentTimestampMinutes() {
 }
 
 int currentTimestampSeconds() {
-  int currentHour = timeClient.getHours();
-  int currentMinutes = timeClient.getMinutes();
   int currentSeconds = timeClient.getSeconds();
-  return (currentHour*60 + currentMinutes)*60 + currentSeconds;
+  return (currentTimestampMinutes())*60 + currentSeconds;
 }
 
 int secondsSinceClubNightBeginning() {
